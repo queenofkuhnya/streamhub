@@ -115,22 +115,4 @@
 - **Благодарность.** Работа с Яндекс Музыкой, SoundCloud и подбор текстов песен основаны на подходе мода MoonsCloud (форк Overtone от chifir4ik и PabJlo, лицензия MIT). Шрифты Unbounded и Golos — лицензия SIL OFL (файлы в public/fonts).
 - **Обновление со старой версии.** Настройки сохранятся. Эти файлы больше не нужны, их можно удалить: `public\alerts.html`, `public\tts.html`, `src\donationalerts.js`, `src\tts.js`, `src\speech.js`, `src\ytdlp.js`, папка `data\bin`, файл `src\youtube.js` (переехал в `src\sources\`).
 
-## Для разработчика: сборка StreamHub.exe
-```
-npm install
-npx @yao-pkg/pkg . --compress GZip --no-bytecode --public --public-packages "*" --targets node22-win-x64 --output dist/StreamHub.exe   # точка входа — main.js
-```
-Иконка: перед сборкой вшей её в основу Node (`build/seticon.mjs`, нужен пакет `resedit`) и собери с `PKG_NODE_PATH`, указывающим на изменённую основу:
-```
-node build/seticon.mjs <кэш pkg>/fetched-v22.x-win-x64 base-icon.bin build/StreamHub.ico 0.9.0
-PKG_NODE_PATH=base-icon.bin npx @yao-pkg/pkg . --compress GZip --no-bytecode --public --public-packages "*" --targets node22-win-x64 --output dist/StreamHub.exe
-```
-Всё из папки `public` попадает внутрь exe. Папка `data` создаётся рядом с exe при первом запуске.
-
-### Выпуск новой версии (обновление по кнопке)
-Программа ищет обновления в GitHub Releases репозитория из поля `updateRepo` в `package.json`. Репозиторий должен быть **публичным** (исходники класть туда не обязательно).
-1. Подними `version` в `package.json` (например, `0.9.1`) и собери `dist/StreamHub.exe`.
-2. На GitHub: *Releases → Draft a new release*, тег `v0.9.1`, в описании напиши, что нового (это увидят стримеры в плашке).
-3. Прикрепи файл, который называется ровно **`StreamHub.exe`** (zip можно приложить рядом для новых пользователей) → *Publish release*.
-
 Программа проверяет обновления через 8 секунд после запуска и потом раз в 6 часов. Скачанный файл сверяется по размеру и SHA-256 (GitHub считает хэш сам).
