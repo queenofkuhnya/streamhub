@@ -103,8 +103,4 @@ StreamHub работает на твоём компьютере. У нас не�
 
 Сборка `StreamHub.exe` и выпуск обновлений — в [docs/BUILD.md](docs/BUILD.md).
 
-## Благодарности
-
-Работа с Яндекс Музыкой, SoundCloud и подбор текстов песен основаны на подходе мода MoonsCloud (форк Overtone от chifir4ik и PabJlo, лицензия MIT). Шрифты Unbounded и Golos — лицензия SIL OFL.
-
 <sub>На картинках выдуманные треки, исполнители и зрители.</sub>
